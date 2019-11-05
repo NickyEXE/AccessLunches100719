@@ -10,6 +10,9 @@
   </head>
 
   <body>
+    <% if !!@current_user %>
+      <%= button_to "Logout", logout_path, method: "delete" %>
+    <% end%>
     <% if flash[:errors]%>
       <ul>
       <% flash[:errors].each do |error| %>
