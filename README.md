@@ -87,7 +87,7 @@ We should start by building our Restaurants Index action and view, so that our a
 - It should have a form to submit a review.
 - It should have the average rating for the restaurant.
 - It should have a list of all reviews of the restaurant. Note: this replaces our review index and review show, which we don't need!
-> For the sake of formatting, wrap the section where you render all reviews in a div with a class called `reviews` and wrap each individual restaurant in a div with a class called `review`. Do not use `<ul>` and `<li>`.
+> For the sake of formatting, wrap the entire view in a div with a class called `show`. Additionally, wrap the section where you render all reviews in a div with a class called `reviews` and wrap each individual restaurant in a div with a class called `review`. Do not use `<ul>` and `<li>`.
 
 ### Adding Validations
 
