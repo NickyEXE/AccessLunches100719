@@ -41,12 +41,14 @@ Second, we'll need a reviews model (as well as a relevant controller) that belon
 
 ### Hitting the API
 
-Next, we need to build a script in our db/seeds.rb file to pull the nearest 1000 meters to 89 Prospect Street, Brooklyn, NY from Yelp.
+Next, we need to build a script in our db/seeds.rb file to pull the nearest 1000 meters to 89 Prospect Street, Brooklyn, NY from Yelp. 
+
+> Note: Where you put your API calls is up to the programmer. As this is a simple app and we're only pulling restaurants on initialization, a seed file is fine. When you're building your own app, think about where you might want to add it. 
 
 The following link would be helpful to get started. We're looking to pull from "Business Search": https://www.yelp.com/developers/documentation/v3/get_started
 
 Our db/seeds.rb method should work in three steps: 
-- Make the initial query to the API (#hit_yelp_api)
+- Make the initial query to the API (.hit_yelp_api)
 - Receive a list of 50 businesses (the maximum Yelp will serve) (#get_businesses)
 - Take each business and add it to our database (#add_business)
 

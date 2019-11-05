@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :restaurants
   resources :users, only: [:new, :create]
   get '/login', to: "auth#new", as: 'login'
   post '/login', to: "auth#create", as: 'authenticate'
