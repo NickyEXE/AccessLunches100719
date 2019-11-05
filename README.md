@@ -55,9 +55,12 @@ Our db/seeds.rb method should work in three steps:
 Feel free to throw a byebug in right after your response to play with the data to make it work! When you're done, you should have 50 restaurants in a database.
 
 ### Building the Controllers and Views
-
+- First, let's make sure that people only see reviews and restaurants if they're logged in. Let's add `before_action :authorized` to the tops of our RestaurantsController and ReviewsController
 - We should start by building our Restaurants Index action and view, so that our app doesn't break when we log in. It should render out all the restaurants.
 - We should then build a Restaurant's Show page, which shows off all the restaurants.
 - Let's create a form on the Restaurant's Show page to add a new review. This should redirect to the restaurant's show page once the review is created. 
-- We *don't* need a review index or show. Instead, let's display all the reviews for a relevant restaurant on that restaurant's show page.
+- We *don't* need a review index or show. Instead, let's display all the reviews for a relevant restaurant on that restaurant's show page. Let's also include their average review, if it's available!
 
+## Adding Validations
+
+- We should make sure people can only make a review with a rating between 1 and 10! Otherwise some bad actors could completely throw off our mean!
