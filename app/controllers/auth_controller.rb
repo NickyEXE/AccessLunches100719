@@ -15,4 +15,9 @@ class AuthController < ApplicationController
             redirect_to login_path
         end
     end
+
+    def logout
+        reset_session
+        redirect_to login_path
+    end
 end
