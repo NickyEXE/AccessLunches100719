@@ -1,5 +1,5 @@
 class ApplicationController < ActionController::Base
-    before_action :build_auth
+    before_action :setup_auth
 
     def setup_auth
         @current_user = User.find_by(id: session[:user_id])
@@ -7,7 +7,7 @@ class ApplicationController < ActionController::Base
 
     def authorized
         unless !!@current_user
-            flash[:errors] = "Login bruh."
+            flash[:errors]= ["Login please!"]
             return redirect_to '/login'
         end
     end
