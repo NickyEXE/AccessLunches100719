@@ -11,6 +11,7 @@
 
   <body>
     <% if !!@current_user %>
+      <%= button_to "All Restaurants", restaurants_path, method: "get" %>
       <%= button_to "Logout", logout_path, method: "delete" %>
     <% end%>
     <% if flash[:errors]%>

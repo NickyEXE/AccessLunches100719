@@ -1,6 +1,5 @@
 <h1>Welcome to Access Lunch!</h1> 
 
-<div class="Quick Reviewer">
 <h3>Quick reviewer!</h3>
   <%= form_for @review do |f|  %>
         <label>Rating</label><br/>
@@ -10,7 +9,6 @@
         <%= f.collection_select :restaurant_id, @restaurants, :id, :name %>
         <%= f.submit %>
     <% end %>
-</div>
 
 <div class="cards">
 <% @restaurants.each do |restaurant|%>

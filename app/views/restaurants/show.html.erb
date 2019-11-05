@@ -17,7 +17,7 @@
     Average Rating: <%= @restaurant.average_rating %>
     <div class="reviews">
     <% @reviews.each do |review| %>
-        <div class="review"><span class="username"><%= review.user.username %></span>: <%= review.content %></div>
-    </div>
+        <div class="review"><%= review.user.username %>: <%= review.content %></div>
     <% end%>
+    </div>
 </div>
