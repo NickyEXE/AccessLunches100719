@@ -11,7 +11,8 @@ def hit_yelp_api
     params = {
         term: "lunch",
         location: "89 Prospect Street, Brooklyn, NY",
-        limit: 50
+        limit: 50,
+        radius: 1000
     }
     response = HTTP.auth("Bearer #{ENV['YELP_KEY']}").get(url, params: params)
     response.parse
@@ -19,7 +20,6 @@ end
 
 def get_businesses
     response = hit_yelp_api
-    byebug
     response["businesses"].each do |business|
         Restaurant.create_business_from_yelp_data(business)
     end

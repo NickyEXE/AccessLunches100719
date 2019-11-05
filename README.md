@@ -41,16 +41,29 @@ Second, we'll need a reviews model (as well as a relevant controller) that belon
 
 ### Hitting the API
 
-Next, we need to build a script in our db/seeds.rb file to pull the nearest 1000 meters to 89 Prospect Street, Brooklyn, NY from Yelp. 
+Next, we need to build a script to pull the nearest 1000 meters to 89 Prospect Street, Brooklyn, NY from Yelp. 
 
-> Note: Where you put your API calls is up to the programmer. As this is a simple app and we're only pulling restaurants on initialization, a seed file is fine. When you're building your own app, think about where you might want to add it. 
+> Note: Where you put your API calls is up to the programmer. As this is a simple app and we're only pulling restaurants on initialization, using the seed file for your API calls is reasonable. When you're building your own app, think about where you might want to add it. 
 
 The following link would be helpful to get started. We're looking to pull from "Business Search": https://www.yelp.com/developers/documentation/v3/get_started
 
-Our db/seeds.rb method should work in three steps: 
-- Make the initial query to the API (.hit_yelp_api)
-- Receive a list of 50 businesses (the maximum Yelp will serve) (#get_businesses)
-- Take each business and add it to our database (#add_business)
+Our API call should work in three steps: 
+- Make the initial query to the API
+- Receive a list of 50 businesses (the maximum Yelp will serve)
+- Take each business and add it to our database (for this, it may be helpful to create a method in Restaurant to create a restaurant by the data given in an item in the array of businesses provided by Yelp).
+
+The following code will convert any business in the Yelp business array set to a variable "business" into a Restaurant in our database:
+```.ruby 
+self.create(
+    name: business["name"], 
+    url: business["url"], 
+    lat: business["coordinates"]["latitude"], 
+    long: business["coordinates"]["longitude"], 
+    image_url: business["image_url"], 
+    address: business["location"]["display_address"].join(", "), 
+    kind_of_food: business["categories"].map{|item| item["title"]}.join(", ")
+    )
+```
 
 Feel free to throw a byebug in right after your response to play with the data to make it work! When you're done, you should have 50 restaurants in a database.
 
