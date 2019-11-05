@@ -73,20 +73,21 @@ Feel free to throw a byebug in right after your response to play with the data t
 #### Index
 We should start by building our Restaurants Index action and view, so that our app doesn't break when we log in. It should:
 - Render out all the restaurant names with links to their show pages.
-- Include an image
+- Include an image.
+
+> For the sake of formatting, wrap the section where you render all restaurants in a div with a class called `cards` and wrap each individual restaurant in a div with a class called `card`. Do not use `<ul>` and `<li>`.
+
+> To neatly render as cards, these are rendered in a flexbox in CSS.    
 
 #### Show
 - The restaurant's show page should include an h1 at the top that shows the Restaurant's name and links to its website.
 - It should have, underneath, a jumbotron of the image provided by the yelp API.
-- It should list the kinds of food
-- It should include the restaurant's address
-- It should have a form to submit a review
-- It should have a list of all reviews of the restaurant
-
-
-- We should then build a Restaurant's Show page
-- Let's create a form on the Restaurant's Show page to add a new review. This should redirect to the restaurant's show page once the review is created. 
-- We *don't* need a review index or show. Instead, let's display all the reviews for a relevant restaurant on that restaurant's show page. Let's also include their average review, if it's available!
+- It should list the kinds of food.
+- It should include the restaurant's address.
+- It should have a form to submit a review.
+- It should have the average rating for the restaurant.
+- It should have a list of all reviews of the restaurant. Note: this replaces our review index and review show, which we don't need!
+> For the sake of formatting, wrap the section where you render all reviews in a div with a class called `reviews` and wrap each individual restaurant in a div with a class called `review`. Do not use `<ul>` and `<li>`.
 
 ### Adding Validations
 
