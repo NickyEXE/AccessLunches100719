@@ -2,6 +2,10 @@ class Restaurant < ApplicationRecord
     has_many :reviews
     has_many :users, through: :reviews
 
+    def average_review
+        self.reviews.length > 0 ? self.reviews.map{|review| review.rating}.reduce(:+)/self.reviews.count : "No reviews found!"
+    end
+
     def self.add_one_restaurant_from_yelp_api(business)
         self.create(
             name: business["name"], 

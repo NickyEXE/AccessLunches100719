@@ -1,0 +1,19 @@
+<marquee><h1>It's lunch o'clock my buds!</h1></marquee>
+
+<h3>Quick Reviewer</h3>
+<%= form_for @review do |f| %>
+    <label>Rating:<br /></label> <%= f.number_field :rating, in: 1...11 %><br />
+    <label>Post:<br /></label> <%= f.text_area :content %><br />
+    <%= f.collection_select :restaurant_id, @restaurants, :id, :name %>
+    <%= f.submit %>
+<% end %>
+
+
+<div class="cards">
+    <% @restaurants.each do |restaurant|  %>
+        <div class="card">
+           <img src=<%= restaurant.image_url %> alt=<%= restaurant.name%>/><br/>
+            <%= link_to restaurant.name, restaurant  %>
+        </div>
+    <% end%>
+</div>

@@ -1,0 +1,37 @@
+<div class="show">
+    <h1> <%= link_to @restaurant.name, @restaurant.url %> </h1><br/>
+    
+    <img src=<%= @restaurant.image_url %> alt=<%= @restaurant.name%>/><br/>
+    
+    <p><strong>Type of food:</strong> <%= @restaurant.kind_of_food %></p>
+    
+    <p><strong>Located at:</strong> <%= @restaurant.address %></p>
+    
+
+    <%= form_for @review do |f| %>
+        <label>Rating:</label><br /> <%= f.number_field :rating, in: 1...11 %><br />
+        <label>Post:</label><br /> <%= f.text_area :content %><br />
+        <%= f.hidden_field :restaurant_id, :value => @restaurant.id %>
+        <%= f.submit %>
+    <% end %>
+    
+    <div class="reviews">
+        <p><strong>Average review:</strong> <%= @restaurant.average_review %></p>
+        <% @reviews.each do |review|%>
+            <div class="review"><strong><%=review.user.username%>:</strong> <%=review.content%> (Rating: <%=review.rating%>) </div>
+        <% end%>
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
