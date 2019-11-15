@@ -1,0 +1,19 @@
+
+<%= form_for @review do |f| %>
+    <%= f.label :content %></br>
+    <%= f.text_area :content %></br>
+    <%= f.label :rating %></br>
+    <%= f.number_field :rating, in: 1..10 %></br>
+    <%= f.collection_select :restaurant_id, @restaurants, :id, :name  %>
+    <%= f.submit %>
+<% end%>
+
+<div class="cards">
+<% @restaurants.each do |restaurant|%>
+    <div class="card">
+        <img src=<%= restaurant.image_url %> alt=<%= restaurant.name%> >
+        <br/>
+        <%= link_to restaurant.name, restaurant %>
+    </div>
+<% end%>
+</div>

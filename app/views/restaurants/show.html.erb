@@ -1,0 +1,42 @@
+<div class="show">
+
+<h1><%= link_to @restaurant.name, @restaurant.url %></h1>
+<img src=<%= @restaurant.image_url %> alt=<%= @restaurant.name%> >
+
+<%#See the Restaurant model for how we get average_review_stars%>
+<%= @restaurant.average_review_stars%>
+<p><strong>Kind of food: </strong><%= @restaurant.kind_of_food %></p>
+<p><strong>Address: </strong><%= @restaurant.address %></p>
+
+<%#@restaurant in the below button is the same as writing: restaurant_path(@restaurant.id)%>
+<%= button_to "delete", @restaurant, :method => :delete %>
+
+<%#https://developers.google.com/maps/documentation/embed/guide%>
+<iframe width="600" height="450" frameborder="0" style="border:0"
+src=<%= "https://www.google.com/maps/embed/v1/place?q=#{@restaurant.lat}%2C#{@restaurant.long}&key=AIzaSyAv5GZB-XrQqJYOEQ_AKoGVmHe3MtLAyyo" %> allowfullscreen></iframe>
+
+<%= form_for @review do |f| %>
+    <%= f.label :content %></br>
+    <%= f.text_area :content %></br>
+    <%= f.label :rating %></br>
+    <%= f.number_field :rating, in: 1..10 %></br>
+    <%= f.hidden_field :restaurant_id, :value => @restaurant.id %>
+    <%= f.submit %>
+<% end%>
+<h1>Reviews!</h1>
+<div class="reviews">
+
+    <%@restaurant.reviews.each do |review|%>
+        <div class="review">
+            
+            <br/>
+            <strong><%= review.user.username %>: </strong> 
+             <%= review.content  %>
+             (Rating: <% review.rating.times do |item| %>
+                    ⭐️
+                <% end%>)
+        </div>
+    <% end%>
+</div>
+
+</div>
