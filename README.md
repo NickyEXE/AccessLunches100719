@@ -2,7 +2,7 @@
 
 Students need food in order to code effectively! 
 
-Unfortunately, until now, Access Labs hasn't had any method to log data on which lunches work best for Flatiron students.
+Unfortunately, until now, Flatiron School hasn't had any method to log data on which lunches work best for students.
 
 Think about how many lunches were consumed without providing us with delicious data! Lost forever! That changes today.
 
