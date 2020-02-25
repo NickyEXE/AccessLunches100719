@@ -5,6 +5,9 @@
 <p><%= @restaurant.kind_of_food %></p>
 <p><%= @restaurant.address %></p>
 
+<iframe width="600" height="450" frameborder="0" style="border:0"
+src="https://www.google.com/maps/embed/v1/place?q=<%= @restaurant.address %>&key=AIzaSyAofUez4t-xwk4MKMECVA2zzYzz7X9c4D8" allowfullscreen></iframe>
+
 <%= form_for @review do |f| %>
     <%= f.label :rating %>
     <%= f.number_field :rating, min: 1, max: 10 %>
