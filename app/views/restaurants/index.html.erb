@@ -1,0 +1,21 @@
+<h1>Flunchiron School - Foodbenders</h1>
+
+<div class="cards">
+
+<%= form_for @review do |f| %>
+    <%= f.label :rating %>
+    <%= f.number_field :rating, min: 1, max: 10 %>
+    <br/>
+    <%= f.text_area :content %>
+    <%= f.collection_select :restaurant_id, @restaurants, :id, :name %>
+    <br/>
+    <%= f.submit%>
+<% end%>
+
+<% @restaurants.each do |restaurant|%>
+    <div class="card">
+        <%= image_tag restaurant.image_url %><br/>
+        <%= link_to restaurant.name, restaurant %>
+    </div>
+<% end%>
+</div>
