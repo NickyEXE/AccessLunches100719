@@ -1,7 +1,7 @@
 <div class="show">
 <h1><%= @restaurant.name %></h1>
 <%= image_tag @restaurant.image_url %>
-<p><%= "⭐️ " * @restaurant.average_rating %></p>
+<p><%= @restaurant.average_rating ? "⭐️ " * @restaurant.average_rating : "No reviews yet!" %></p>
 <p><%= @restaurant.kind_of_food %></p>
 <p><%= @restaurant.address %></p>
 

@@ -15,7 +15,11 @@ class Restaurant < ApplicationRecord
     end
 
     def average_rating
-        self.reviews.sum(:rating)/self.reviews.length
+        if self.reviews.length > 0
+            self.reviews.sum(:rating)/self.reviews.length
+        else
+            false
+        end
     end
 
 
