@@ -1,0 +1,29 @@
+<h1>My Restaurant List</h1>
+
+    <%= form_for @review do |f| %>
+        <%= f.label :rating %>
+        <%= f.number_field :rating, in: 1..5 %>
+        <br/>
+        <%= f.label :content %>
+        <%= f.text_area :content %>
+        <br/>
+        <%= f.collection_select(:restaurant_id, @restaurants, :id, :name)%>
+        <%= f.submit %>
+    <% end%>
+
+    <%= form_tag search_path do %>
+        <label>Search by name:</label>
+        <%= text_field_tag :'search' %><br>
+        <%= submit_tag "Submit" %>
+    <% end%>
+    <br/>
+
+    <div class="cards">
+    <% @restaurants.each do |restaurant|%>
+        <div class="card">
+        <%= link_to restaurant.name, restaurant_path(restaurant) %>
+        <br/>
+        <%= image_tag restaurant.image_url %>
+        </div>
+    <% end%>
+</div>

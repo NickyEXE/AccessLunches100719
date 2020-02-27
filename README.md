@@ -37,7 +37,8 @@ First, we need a restaurants model (as well as a relevant controller) with the f
 Second, we'll need a reviews model (as well as a relevant controller) that belongs to both user and restaurant with the following columns: 
 * content
 * rating (int)
-* any foreign keys
+* restaurant_id
+* user_id
 
 ### Hitting the API
 
