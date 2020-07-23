@@ -1,1 +1,10 @@
 <h1>NOURISH.EXE</h1>
+
+<div class="cards">
+  <% @restaurants.each do |restaurant| %>
+    <div class="card">
+      <%= image_tag restaurant.image_url %><br>
+      <%= link_to restaurant.name, restaurant %>
+    </div>
+  <% end %>
+</div>
