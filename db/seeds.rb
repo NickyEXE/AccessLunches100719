@@ -5,3 +5,17 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+def search
+  url = "https://api.yelp.com/v3/businesses/search"
+  params = {
+    term: "lunch",
+    location: "89 Prospect St, Brooklyn, NY",
+    limit: 50
+  }
+
+  response = HTTP.auth("Bearer #{ENV['YELP_KEY']}").get(url, params: params)
+  response.parse
+end
+
+search["businesses"].each{|business| Restaurant.create_business_by_yelp_hash(business)}
