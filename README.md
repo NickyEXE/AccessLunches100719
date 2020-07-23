@@ -1,6 +1,6 @@
 # README
 
-Students need food in order to code effectively! 
+Students need food in order to code effectively!
 
 Unfortunately, until now, Flatiron School hasn't had any method to log data on which lunches work best for Flatiron students.
 
@@ -34,33 +34,33 @@ First, we need a restaurants model (as well as a relevant controller) with the f
 * address
 * kind_of_food
 
-Second, we'll need a reviews model (as well as a relevant controller) that belongs to both user and restaurant with the following columns: 
+Second, we'll need a reviews model (as well as a relevant controller) that belongs to both user and restaurant with the following columns:
 * content
 * rating (int)
 * any foreign keys
 
 ### Hitting the API
 
-Next, we need to build a script to pull the nearest 1000 meters to 89 Prospect Street, Brooklyn, NY from Yelp. 
+Next, we need to build a script to pull the nearest 1000 meters to 89 Prospect Street, Brooklyn, NY from Yelp.
 
-> Note: Where you put your API calls is up to the programmer. As this is a simple app and we're only pulling restaurants on initialization, using the seed file for your API calls is reasonable. When you're building your own app, think about where you might want to add it. 
+> Note: Where you put your API calls is up to the programmer. As this is a simple app and we're only pulling restaurants on initialization, using the seed file for your API calls is reasonable. When you're building your own app, think about where you might want to add it.
 
 The following link would be helpful to get started. We're looking to pull from "Business Search": https://www.yelp.com/developers/documentation/v3/get_started
 
-Our API call should work in three steps: 
+Our API call should work in three steps:
 - Make the initial query to the API
 - Receive a list of 50 businesses (the maximum Yelp will serve)
 - Take each business and add it to our database (for this, it may be helpful to create a method in Restaurant to create a restaurant by the data given in an item in the array of businesses provided by Yelp).
 
 The following code will convert any business in the Yelp business array set to a variable "business" into a Restaurant in our database:
-```.ruby 
+```.ruby
 self.create(
-    name: business["name"], 
-    url: business["url"], 
-    lat: business["coordinates"]["latitude"], 
-    long: business["coordinates"]["longitude"], 
-    image_url: business["image_url"], 
-    address: business["location"]["display_address"].join(", "), 
+    name: business["name"],
+    url: business["url"],
+    lat: business["coordinates"]["latitude"],
+    long: business["coordinates"]["longitude"],
+    image_url: business["image_url"],
+    address: business["location"]["display_address"].join(", "),
     kind_of_food: business["categories"].map{|item| item["title"]}.join(", ")
     )
 ```
@@ -77,7 +77,7 @@ We should start by building our Restaurants Index action and view, so that our a
 
 > For the sake of formatting, wrap the section where you render all restaurants in a div with a class called `cards` and wrap each individual restaurant in a div with a class called `card`. Do not use `<ul>` and `<li>`.
 
-> To neatly render as cards, these are rendered in a flexbox in CSS.    
+> To neatly render as cards, these are rendered in a flexbox in CSS.
 
 #### Show
 - The restaurant's show page should include an h1 at the top that shows the Restaurant's name and links to its website.
@@ -96,4 +96,3 @@ We should start by building our Restaurants Index action and view, so that our a
 ### Adding a Quick Review Feature
 
 - What if our users want to quickly review something on the go? Let's make a form on the index page to review. How will we let the users choose which restaurant we're reviewing in the form, though?
-

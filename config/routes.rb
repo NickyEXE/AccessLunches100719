@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  resources :reviews
+  resources :reviews, only: [:create]
   resources :restaurants, only: [:index, :show]
   resources :users, only: [:new, :create]
   get '/login', to: "auth#new", as: 'login'
