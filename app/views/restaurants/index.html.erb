@@ -1,0 +1,13 @@
+<h1>So Ye Seek Lunch</h1>
+<%= form_tag restaurants_path, method: :get %>
+<%= label_tag "What Kind of Food Are You Looking for?"%>
+<%= text_field_tag :query %>
+
+<div class="cards">
+  <% @restaurants.each do |restaurant|%>
+    <div class="card"><%= link_to restaurant.name, restaurant %>
+    <br>
+    <%= image_tag restaurant.image_url %>
+    </div>
+  <% end %>
+</div>
