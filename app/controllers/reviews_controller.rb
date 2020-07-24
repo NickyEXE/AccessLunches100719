@@ -3,7 +3,12 @@ class ReviewsController < ApplicationController
 
   def create
     review = @current_user.reviews.create(review_params)
-    redirect_to review.restaurant
+    if review.valid?
+      redirect_to review.restaurant
+    else
+      flash[:errors] = review.errors.full_messages
+      redirect_to restaurant_path(params[:review][:restaurant_id])
+    end
   end
 
   private

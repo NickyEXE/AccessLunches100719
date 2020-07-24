@@ -77,3 +77,9 @@ textarea {
     height: 6em;
     border-radius: 10px;
 }
+
+.errors {
+    list-style: none;
+    color: yellow;
+    padding-left: 0;
+}

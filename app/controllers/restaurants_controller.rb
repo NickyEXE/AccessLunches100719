@@ -2,7 +2,7 @@ class RestaurantsController < ApplicationController
   before_action :authorized
 
   def index
-    @restaurants = Restaurant.all
+    @restaurants = Restaurant.filter_by_type(params[:query]).sort_by_type(params[:Filter])
   end
 
   def show

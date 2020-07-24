@@ -1,7 +1,11 @@
 module ReviewsHelper
 
   def stars(num)
-    "⭐️" * num
+    if num
+      "⭐️" * num
+    else
+      "No Reviews Yet!"
+    end
   end
 
   def post_date(datetime)

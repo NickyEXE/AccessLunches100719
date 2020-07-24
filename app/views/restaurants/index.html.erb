@@ -1,5 +1,11 @@
 <h1>NOURISH.EXE</h1>
 
+<%= form_tag restaurants_path, method: :get %>
+<%= label_tag "What's your craving, console cowboy?" %>
+<%= text_field_tag :query %>
+<%= select_tag "Filter", raw("<option disabled>Select a Way To Sort</option><option>Name</option><option>Rating</option>") %>
+<%= submit_tag "Search" %>
+
 <div class="cards">
   <% @restaurants.each do |restaurant| %>
     <div class="card">

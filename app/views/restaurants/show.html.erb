@@ -1,6 +1,9 @@
+<%= link_to "See All Restaurants", restaurants_path %>
+
 <div class="show">
   <h1><%= link_to @restaurant.name, @restaurant.url %></h1>
   <p><%= image_tag @restaurant.image_url %></p>
+  <p><%= stars(@restaurant.average_rating) %></p>
   <p><%= @restaurant.kind_of_food %></p>
   <p><%= @restaurant.address %></p>
 
@@ -11,9 +14,9 @@
     src="https://www.google.com/maps/embed/v1/place?key=<%= ENV['GOOGLE_KEY'] %>&q=<%= @restaurant.address%>" allowfullscreen>
   </iframe>
 
-
   <div class="reviews">
     <%= form_for @review do |f| %>
+      <%= render 'layouts/errors' %>
       <%= f.label :rating %><br>
       <%= f.number_field :rating, in:(1..5) %><br>
       <%= f.label :content %><br>

@@ -13,4 +13,32 @@ class Restaurant < ApplicationRecord
       kind_of_food: business["categories"].map{|item| item["title"]}.join(", ")
       )
   end
+
+  def average_rating
+    unless reviews.empty?
+      reviews.average(:rating).round
+    end
+  end
+
+  def self.filter_by_type(query)
+    where("kind_of_food LIKE ?", "%#{query}%")
+  end
+
+  def self.sort_by_type(selected_type)
+    case selected_type
+      when "Name"
+        order(:name)
+      when "Rating"
+        order(:average_rating)
+      else
+        all
+    end
+  end
+
+
+  # Get query from user
+  # find restaurants that match query
+  ## done
+  # send those back.
+
 end
