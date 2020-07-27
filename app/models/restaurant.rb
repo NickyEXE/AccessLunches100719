@@ -3,7 +3,7 @@ class Restaurant < ApplicationRecord
   has_many :users, through: :reviews
 
   def self.create_business_by_yelp_hash(business)
-    create(
+    find_or_create_by(
       name: business["name"],
       url: business["url"],
       lat: business["coordinates"]["latitude"],
@@ -16,7 +16,7 @@ class Restaurant < ApplicationRecord
 
   def average_rating
     unless reviews.empty?
-      reviews.average(:rating).round
+      reviews.average(:rating)
     end
   end
 
@@ -33,6 +33,11 @@ class Restaurant < ApplicationRecord
       else
         all
     end
+  end
+
+  def self.get_restaurants_by_location(location)
+    search = YelpSearch.new(location).results
+    search["businesses"].map{|business| Restaurant.create_business_by_yelp_hash(business)}
   end
 
 

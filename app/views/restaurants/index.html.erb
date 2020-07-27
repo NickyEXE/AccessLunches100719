@@ -1,11 +1,21 @@
 <h1>NOURISH.EXE</h1>
 
+<h3>What's your craving, console cowboy?</h3>
 <%= form_tag restaurants_path, method: :get %>
-<%= label_tag "What's your craving, console cowboy?" %>
-<%= text_field_tag :query %>
+<%= label_tag :location, "Where are you?" %><br>
+<%= text_field_tag :location_query %><br>
+<%= label_tag :query, "What do you hunger for?" %><br>
+<%= text_field_tag :query %><br>
+<%= label_tag :filter, "How do you wish to sort?" %><br>
 <%= select_tag "Filter", raw("<option disabled>Select a Way To Sort</option><option>Name</option><option>Rating</option>") %>
 <%= submit_tag "Search" %>
 
+<% if @location_query %>
+  <h3>Displaying results at <%= @location_query %>.</h3>
+
+<% else %>
+  <h3>Displaying all restaurants.</h3>
+<% end %>
 <div class="cards">
   <% @restaurants.each do |restaurant| %>
     <div class="card">

@@ -7,16 +7,16 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 
-def search
-  url = "https://api.yelp.com/v3/businesses/search"
-  params = {
-    term: "lunch",
-    location: "89 Prospect St, Brooklyn, NY",
-    limit: 50
-  }
+# def search
+#   url = "https://api.yelp.com/v3/businesses/search"
+#   params = {
+#     term: "lunch",
+#     location: "89 Prospect St, Brooklyn, NY",
+#     limit: 50
+#   }
 
-  response = HTTP.auth("Bearer #{ENV['YELP_KEY']}").get(url, params: params)
-  response.parse
-end
+#   response = HTTP.auth("Bearer #{ENV['YELP_KEY']}").get(url, params: params)
+#   response.parse
+# end
 
-search["businesses"].each{|business| Restaurant.create_business_by_yelp_hash(business)}
+Restaurant.get_restaurants_by_location("Marlin, Texas")
