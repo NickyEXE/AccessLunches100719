@@ -2,7 +2,7 @@ class Restaurant < ApplicationRecord
   has_many :reviews
   has_many :users, through: :reviews
 
-  def self.create_business_by_yelp_hash(business)
+  def self.find_or_create_business_from_yelp(business)
     find_or_create_by(
       name: business["name"],
       url: business["url"],
@@ -37,7 +37,7 @@ class Restaurant < ApplicationRecord
 
   def self.get_restaurants_by_location(location)
     search = YelpSearch.new(location).results
-    search["businesses"].map{|business| Restaurant.create_business_by_yelp_hash(business)}
+    search["businesses"].map{|business| Restaurant.find_or_create_business_from_yelp(business)}
   end
 
 

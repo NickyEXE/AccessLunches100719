@@ -19,4 +19,4 @@
 #   response.parse
 # end
 
-Restaurant.get_restaurants_by_location("Marlin, Texas")
+Restaurant.get_restaurants_by_location("89 Prospect St, NY, NY")
